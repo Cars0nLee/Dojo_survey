@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey</title>
+</head>
+<body>
+    <h1>Dojo Survey</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color:red">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div id="container">
+        <form action="/viewinfo" method="POST">
+            <label>Your Name: </label>
+            <input type="text" name="name">
+            <br><br>
+            <label>Dojo Location: </label>
+            <select name="location">
+                <option value="" selected hidden behind>Choose Location</option>
+                <option value="Seattle">Seattle</option>
+                <option value="Arlington">Arlington</option>
+                <option value="San Jose">San Jose</option>
+                <option value="Dallas">Dallas</option>
+            </select>
+            <br><br>
+            <label>Favorite Language</label>
+            <select name="language">
+                <option value="" selected hidden behind>Choose Language</option>
+                <option>Python</option>
+                <option>Java</option>
+                <option>CSS</option>
+                <option>HTML</option>
+                <option>JavaScript</option>
+            </select>
+            <br><br>
+            <label>Comment (Optional):</label>
+            <br><br>
+            <textarea name="comment" cols="90" rows="10"></textarea>
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
